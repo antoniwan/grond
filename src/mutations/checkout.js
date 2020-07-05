@@ -1,4 +1,4 @@
-import stripe from "../src/stripe";
+import stripe from "../stripe";
 
 export async function checkout(parent, args, ctx, info, { query }) {
   // 1. Query the current user and make sure they are signed in

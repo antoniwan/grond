@@ -1,6 +1,6 @@
 import { promisify } from "util";
 import { randomBytes } from "crypto";
-import { transport, makeANiceEmail } from "../src/mail";
+import { transport, makeANiceEmail } from "../mail";
 
 export async function requestReset(parent, args, ctx, info, { query }) {
   const response = await query(
