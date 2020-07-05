@@ -1,6 +1,5 @@
 import { Text, Integer, Relationship, DateTime } from "@keystonejs/fields";
 import { byTracking, atTracking } from "@keystonejs/list-plugins";
-import { userIsAdmin, userIsAdminOrOwner } from "../utils/access";
 import formatMoney from "../utils/formatMoney.js";
 
 export default {
@@ -31,10 +30,10 @@ export default {
     },
   },
   access: {
-    create: userIsAdmin,
-    read: userIsAdminOrOwner,
-    update: false,
-    delete: false,
+    create: true,
+    read: true,
+    update: true,
+    delete: true,
   },
   plugins: [atTracking(), byTracking()],
 };

@@ -7,7 +7,6 @@ import {
 } from "@keystonejs/fields";
 import { byTracking, atTracking } from "@keystonejs/list-plugins";
 import { DateTimeUtc } from "@keystonejs/fields-datetime-utc";
-import { userIsAdmin, userCanAccessUsers } from "../utils/access";
 
 export default {
   fields: {
@@ -20,11 +19,11 @@ export default {
     password: {
       type: Password,
     },
-    checkout: {
-      type: Relationship,
-      ref: "CheckoutItem.user",
-      many: true,
-    },
+    // checkout: {
+    //   type: Relationship,
+    //   ref: "CheckoutItem.user",
+    //   many: true,
+    // },
     permissions: {
       type: Select,
       defaultValue: "USER",
@@ -35,10 +34,10 @@ export default {
   },
   access: {
     create: true,
-    // 🚨 Only Admins may see the full list of users!
-    read: userCanAccessUsers,
-    update: userCanAccessUsers,
-    delete: userIsAdmin,
+    // TODO: 🚨 Only Admins may see the full list of users!
+    read: true,
+    update: true,
+    delete: true,
   },
   plugins: [atTracking(), byTracking()],
 };

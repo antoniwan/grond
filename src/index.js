@@ -38,10 +38,10 @@ const keystone = new Keystone({
 });
 
 keystone.createList("User", User);
-keystone.createList("Car", Car);
-keystone.createList("CheckoutItem", CheckoutItem);
-keystone.createList("OrderCar", OrderCar);
-keystone.createList("Order", Order);
+// keystone.createList("Car", Car);
+//keystone.createList("CheckoutItem", CheckoutItem);
+//keystone.createList("OrderCar", OrderCar);
+//keystone.createList("Order", Order);
 
 const authStrategy = keystone.createAuthStrategy({
   type: Auth.PasswordAuthStrategy,
@@ -51,22 +51,22 @@ const authStrategy = keystone.createAuthStrategy({
 keystone.extendGraphQLSchema({
   types: [{ type: "type Message { message: String }" }],
   queries: [
-    // {
-    //   schema: 'me: User',
-    //   resolver(parent, args, ctx, info) {
-    //     return ctx.authedItem;
-    //   },
-    // },
+    {
+      schema: "me: User",
+      resolver(parent, args, ctx, info) {
+        return ctx.authedItem;
+      },
+    },
   ],
   mutations: [
-    {
-      schema: "addToCheckout(id: ID): CheckoutItem",
-      resolver: mutations.addToCart,
-    },
-    {
-      schema: "checkout(token: String!): Order",
-      resolver: mutations.checkout,
-    },
+    // {
+    //   schema: "addToCheckout(id: ID): CheckoutItem",
+    //   resolver: mutations.addToCart,
+    // },
+    // {
+    //   schema: "checkout(token: String!): Order",
+    //   resolver: mutations.checkout,
+    // },
     {
       schema: "requestReset(email: String!): Message",
       resolver: mutations.requestReset,

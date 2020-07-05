@@ -1,7 +1,6 @@
 import { Integer, Relationship } from "@keystonejs/fields";
 import { graphql } from "graphql";
 import { byTracking, atTracking } from "@keystonejs/list-plugins";
-import { userIsAdminOrOwner } from "../utils/access";
 
 export default {
   labelResolver: async (CheckoutItem, args, context, { schema }) => {
@@ -32,10 +31,10 @@ export default {
     },
   },
   access: {
-    create: userIsAdminOrOwner,
-    read: userIsAdminOrOwner,
-    update: userIsAdminOrOwner,
-    delete: userIsAdminOrOwner,
+    create: true,
+    read: true,
+    update: true,
+    delete: true,
   },
   plugins: [atTracking(), byTracking()],
 };

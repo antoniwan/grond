@@ -14,7 +14,7 @@ export async function requestReset(parent, args, ctx, info, { query }) {
 
   const [user] = response.data.allUsers;
   if (!user) {
-    throw new Error(`No user found for: ${args.email}`);
+    throw new Error(`No user found with this email: ${args.email}`);
   }
   const resetToken = (await promisify(randomBytes)(20)).toString("hex");
   const resetTokenExpiry = new Date(Date.now() + 3600000); // 1 hour from now
@@ -32,12 +32,12 @@ export async function requestReset(parent, args, ctx, info, { query }) {
   const mailRes = await transport.sendMail({
     from: "grond@carbuckets.com",
     to: user.email,
-    subject: "Your Password Reset Token",
-    html: makeANiceEmail(`Password Reset
+    subject: "Password Reset Token - Glamdring",
+    html: makeANiceEmail(`Password Reset Token
       \n\n
-      <a href="${process.env.FRONTEND_URL}/password-reset?resetToken=${resetToken}">Click here to reset your password</a>`),
+      <a href="${process.env.FRONTEND_URL}/reset?resetToken=${resetToken}">Click here to reset your password</a>`),
   });
 
   // 4. Return the message
-  return { message: "Check your email to reset your password" };
+  return { message: "Check your email" };
 }

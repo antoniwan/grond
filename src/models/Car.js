@@ -6,11 +6,6 @@ import {
 } from "@keystonejs/fields";
 import { CloudinaryAdapter } from "@keystonejs/file-adapters";
 import { byTracking, atTracking } from "@keystonejs/list-plugins";
-import {
-  userIsAdminOrOwner,
-  userIsAdmin,
-  userCanUpdateItem,
-} from "../utils/access";
 
 const cloudinaryAdapter = new CloudinaryAdapter({
   cloudName: process.env.CLOUDINARY_CLOUD_NAME,
@@ -33,8 +28,8 @@ export default {
   access: {
     create: true,
     read: true,
-    update: userCanUpdateItem,
-    delete: userIsAdminOrOwner,
+    update: true,
+    delete: true,
   },
   plugins: [atTracking(), byTracking()],
 };
