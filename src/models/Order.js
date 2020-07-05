@@ -1,5 +1,4 @@
 import { Text, Integer, Relationship, DateTime } from "@keystonejs/fields";
-
 import { byTracking, atTracking } from "@keystonejs/list-plugins";
 import { userIsAdmin, userIsAdminOrOwner } from "../utils/access";
 import formatMoney from "../utils/formatMoney.js";
@@ -13,9 +12,9 @@ export default {
   // labelField: 'charge',
   fields: {
     total: { type: Integer },
-    items: {
+    cars: {
       type: Relationship,
-      ref: "OrderItem",
+      ref: "CheckoutItem",
       many: true,
     },
     user: {
