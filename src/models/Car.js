@@ -17,9 +17,13 @@ const cloudinaryAdapter = new CloudinaryAdapter({
 export default {
   fields: {
     name: { type: Text, isRequired: true },
+    make: { type: text, isRequired: true },
+    model: { type: text, isRequired: true },
+    vin: { type: text, isRequired: true },
+    year: { type: text, isRequired: true },
     description: { type: Text, isMultiline: true },
     image: { type: CloudinaryImage, adapter: cloudinaryAdapter },
-    price: { type: Integer },
+    msrp: { type: Integer },
     user: {
       type: Relationship,
       ref: "User",

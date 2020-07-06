@@ -6,11 +6,7 @@ import { AdminUIApp } from "@keystonejs/app-admin-ui";
 import { MongooseAdapter as Adapter } from "@keystonejs/adapter-mongoose";
 import expressSession from "express-session";
 import MongoStoreMaker from "connect-mongo";
-import Car from "./models/Car";
 import User from "./models/User";
-import CheckoutItem from "./models/CheckoutItem";
-import OrderCar from "./models/OrderCar";
-import Order from "./models/Order";
 import * as mutations from "./mutations";
 
 const MongoStore = MongoStoreMaker(expressSession);

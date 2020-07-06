@@ -19,15 +19,10 @@ export default {
     password: {
       type: Password,
     },
-    // checkout: {
-    //   type: Relationship,
-    //   ref: "CheckoutItem.user",
-    //   many: true,
-    // },
     permissions: {
       type: Select,
       defaultValue: "USER",
-      options: ["ADMIN", "EDITOR", "USER"],
+      options: ["ADMIN", "DEALER", "VIEWER", "USER"],
     },
     resetToken: { type: Text, unique: true },
     resetTokenExpiry: { type: DateTimeUtc, unique: true },

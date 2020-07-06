@@ -1,3 +1,7 @@
+export function userIsAdmin({ authentication: { item: user } }) {
+  return Boolean(user && user.permissions === "ADMIN");
+}
+
 export function userIsUser({ authentication: { item: user } }) {
   return user && { id: user.id };
 }
