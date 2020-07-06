@@ -35,14 +35,7 @@ const authStrategy = keystone.createAuthStrategy({
 
 keystone.extendGraphQLSchema({
   types: [{ type: "type Message { message: String }" }],
-  queries: [
-    {
-      schema: "me: User",
-      resolver(parent, args, ctx, info) {
-        return ctx.authedItem;
-      },
-    },
-  ],
+  queries: [],
   mutations: [
     {
       schema: "requestReset(email: String!): Message",
