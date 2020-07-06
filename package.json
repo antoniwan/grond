@@ -38,6 +38,7 @@
     "graphql-fields": "^2.0.3",
     "nodemailer": "^6.4.6",
     "nodemon": "^2.0.4",
+    "prettier": "^2.0.5",
     "react": "^16.13.1",
     "stripe": "^8.46.0"
   }

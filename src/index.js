@@ -25,23 +25,12 @@ const keystone = new Keystone({
   sessionStore: new MongoStore({ url: process.env.DATABASE_URL }),
   async onConnect() {
     if (process.argv.includes("--dummy")) {
-      console.log("🚨🚨🚨INSERTING DUMMY DATA🚨🚨🚨");
-      const { cars } = await import("./src/dummy.js");
-      const Item = keystone.adapters.MongooseAdapter.mongoose.model("Car");
-      await Item.insertMany(items);
-      console.log(
-        "🚨🚨🚨DUMMY DATA ADDED! Start the process with `yarn dev`🚨🚨🚨"
-      );
-      process.exit();
+      //TODO: const { cars } = await import("./src/dummy.js");
     }
   },
 });
 
 keystone.createList("User", User);
-// keystone.createList("Car", Car);
-//keystone.createList("CheckoutItem", CheckoutItem);
-//keystone.createList("OrderCar", OrderCar);
-//keystone.createList("Order", Order);
 
 const authStrategy = keystone.createAuthStrategy({
   type: Auth.PasswordAuthStrategy,
@@ -59,14 +48,6 @@ keystone.extendGraphQLSchema({
     },
   ],
   mutations: [
-    // {
-    //   schema: "addToCheckout(id: ID): CheckoutItem",
-    //   resolver: mutations.addToCart,
-    // },
-    // {
-    //   schema: "checkout(token: String!): Order",
-    //   resolver: mutations.checkout,
-    // },
     {
       schema: "requestReset(email: String!): Message",
       resolver: mutations.requestReset,

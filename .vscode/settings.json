@@ -4,5 +4,15 @@
     "titleBar.inactiveForeground": "#ffffffcc",
     "titleBar.activeBackground": "#FF2C71",
     "titleBar.inactiveBackground": "#FF2C70CD"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
